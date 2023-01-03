@@ -1,3 +1,4 @@
+import { compare, hash } from "bcryptjs";
 import { Request, Response } from "express";
 import { UserRepository } from "../repositories/UserRepository";
 
@@ -16,7 +17,7 @@ export class UserController {
             id: req.userId,
             email: req.body.email,
             name: req.body.name,
-            password: req.body.password,
+            password: await hash(req.body.password, 10),
             profile_image: req.imageUrl
         }
 
@@ -46,11 +47,11 @@ export class UserController {
         if(!user){
             return res.status(400).json({message: `Usuário inexistente.`})
         }
+        const password = req.body.password
 
-        if(user.id!==req.userId){
-            return res.status(403).json({message: `Não é possível deletar outro usuário.`})
+        if(!(await compare(password, user.password))){
+            return res.status(403).json({message: `Senha incorreta. Operação não concluída`})
         }
-
         await userRepository.deleteOne(req.userId)
 
         return res.status(204).send()

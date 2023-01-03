@@ -9,7 +9,7 @@ const userRouter = Router()
 const userController = new UserController()
 
 userRouter.get('/getUserData', authMiddleware, userController.getUserById)
-userRouter.put('/updateUser',  authMiddleware,  validate(ValidationSchemas.signupSchema), uploadMiddleware('profile_image'), userController.updateUser)
+userRouter.put('/updateUser',  authMiddleware,  validate(ValidationSchemas.updateSchema), uploadMiddleware('profile_image'), userController.updateUser)
 userRouter.delete('/deleteUser', authMiddleware, userController.deleteUser)
 
 export default userRouter;

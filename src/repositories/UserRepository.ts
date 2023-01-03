@@ -1,16 +1,17 @@
 import db from '../../firebase/firestore'
+import { User } from '../converters/User'
 
 interface CreateUserDTO {
     id?: string,
     email: string,
     name: string,
     password: string,
-    profile_image: string
+    profile_image?: string
 }
 
 export class UserRepository {
     public async create(user: CreateUserDTO){
-        const result = await db.users.add(user)
+        const result = await db.users.add(user as User)
         return result.id
     }
 
@@ -20,7 +21,7 @@ export class UserRepository {
             return undefined
         }
         const user = { id: userRef.id, ...userRef.data() }
-        return user
+        return user as User
     }
 
     public async readByEmail(email: string) {
