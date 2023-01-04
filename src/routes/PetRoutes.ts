@@ -8,7 +8,7 @@ import ValidationSchemas from "./ValidationSchemas";
 const petRouter = Router()
 const petController = new PetController()
 
-petRouter.post('/registerNewPet', authMiddleware, validate(ValidationSchemas.petSchema),uploadMiddleware('pet_image'), petController.registerNewPet)
+petRouter.post('/registerNewPet', authMiddleware, validate(ValidationSchemas.petSchema), uploadMiddleware('pet_image'), petController.registerNewPet)
 petRouter.post('/scheduleAdoption', authMiddleware, petController.scheduleAdoption)
 petRouter.put('/concludeAdoption', authMiddleware, petController.concludeAdoption)
 petRouter.get('/getAllPets', petController.getAllPets)

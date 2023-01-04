@@ -5,7 +5,7 @@ interface CreatePetDTO {
     user_id?: string,
     age: number,
     pet_image: string,
-    weigth: number,
+    weight: number,
     adopted: boolean
 }
 

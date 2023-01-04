@@ -13,7 +13,7 @@ export class PetController {
             name: req.body.name,
             color: req.body.color,
             pet_image: req.imageUrl,
-            weigth: req.body.weigth,
+            weight: req.body.weight,
             adopted: false
         } as Pet
 
@@ -39,7 +39,7 @@ export class PetController {
             color: req.body.color,
             age: req.body.age,
             pet_image: req.body.pet_image,
-            weigth: req.body.weigth,
+            weight: req.body.weight,
             adopted: req.body.adopted
         }
 

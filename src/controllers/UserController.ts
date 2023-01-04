@@ -1,4 +1,4 @@
-import { compare, hash } from "bcryptjs";
+import { compare } from "bcryptjs";
 import { Request, Response } from "express";
 import { UserRepository } from "../repositories/UserRepository";
 
@@ -17,7 +17,6 @@ export class UserController {
             id: req.userId,
             email: req.body.email,
             name: req.body.name,
-            password: await hash(req.body.password, 10),
             profile_image: req.imageUrl
         }
 

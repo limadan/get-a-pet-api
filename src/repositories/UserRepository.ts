@@ -9,6 +9,13 @@ interface CreateUserDTO {
     profile_image?: string
 }
 
+interface UpdateUserDTO {
+    id: string,
+    name: string,
+    email: string,
+    profile_image?: string
+}
+
 export class UserRepository {
     public async create(user: CreateUserDTO){
         const result = await db.users.add(user as User)
@@ -43,7 +50,7 @@ export class UserRepository {
         return users
     }
 
-    public async updateOne(user: CreateUserDTO){
+    public async updateOne(user:UpdateUserDTO){
         const {id, ...userData} = user
         if(!id){
             return undefined

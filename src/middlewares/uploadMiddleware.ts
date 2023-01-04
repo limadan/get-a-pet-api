@@ -11,6 +11,7 @@ export default function uploadMiddleware(fieldname: string){
         const fileObject = JSON.parse(JSON.stringify(req.files))
         const filePath = fileObject[fieldname].tempFilePath
         const file = fs.readFileSync(filePath)
+
         const cloudFileName = (Date.now()).toString()
 
         bucket.file(`${cloudFileName}`).save(file, {

@@ -6,5 +6,5 @@ export class Pet {
     name: string
     pet_image: string
     user_id?: string
-    weigth: number
+    weight: number
 }
