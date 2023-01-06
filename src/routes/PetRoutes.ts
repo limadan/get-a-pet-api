@@ -15,7 +15,7 @@ petRouter.get('/getAllPets', petController.getAllPets)
 petRouter.get('/getPetsByUser', authMiddleware, petController.getPetsByUser)
 petRouter.get('/getAdoptionsByUser', authMiddleware, petController.getAdoptionsByUser)
 petRouter.get('/getPetById/:id', petController.getPetById)
-petRouter.put('/updatePet/:id',  authMiddleware, validate(ValidationSchemas.petSchema), petController.updatePet)
+petRouter.put('/updatePet/:id',  authMiddleware, validate(ValidationSchemas.petSchema), uploadMiddleware('pet_image'), petController.updatePet)
 petRouter.delete('/deletePet/:id',  authMiddleware, petController.deletePet)
 
 export default petRouter;

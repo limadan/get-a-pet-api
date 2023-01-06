@@ -6,7 +6,7 @@ interface CreatePetDTO {
     age: number,
     pet_image: string,
     weight: number,
-    adopted: boolean
+    adopted?: boolean
 }
 
 export class PetRepository {

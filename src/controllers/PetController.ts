@@ -32,16 +32,17 @@ export class PetController {
         if(pet.user_id !== req.userId){
             return res.status(403).json({message: "Não é possível alterar o pet de outro usuário"})
         }
-
+        console.log(req.imageUrl)
         const petData = {
             id: req.params.id,
             name: req.body.name,
             color: req.body.color,
             age: req.body.age,
-            pet_image: req.body.pet_image,
-            weight: req.body.weight,
-            adopted: req.body.adopted
+            pet_image: req.imageUrl? req.imageUrl : req.body.pet_image,
+            weight: req.body.weight
         }
+
+        console.log(petData)
 
         const result = await petRepository.updateOne(petData)
         if(!result){
